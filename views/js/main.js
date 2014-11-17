@@ -358,8 +358,14 @@ var makeRandomPizza = function() {
   return pizza;
 }
 
+<<<<<<< HEAD
 // returns a DOM element for each pizza
 var pizzaElementGenerator = function(i) {
+=======
+
+//Global variable for a pizza container
+
+>>>>>>> 62e60d0b88310134606b44d577ffb798359b91fa
   var pizzaContainer,             // contains pizza title, image and list of ingredients
       pizzaImageContainer,        // contains the pizza image
       pizzaImage,                 // the pizza image itself
@@ -373,9 +379,14 @@ var pizzaElementGenerator = function(i) {
   pizzaDescriptionContainer = document.createElement("div");
 
   pizzaContainer.classList.add("randomPizzaContainer");
+<<<<<<< HEAD
   pizzaContainer.style.width = "33.33%";
   pizzaContainer.style.height = "325px";
   pizzaContainer.id = "pizza" + i;                // gives each pizza element a unique id
+=======
+  // pizzaContainer.style.width = "33.33%";
+  // pizzaContainer.style.height = "325px";
+>>>>>>> 62e60d0b88310134606b44d577ffb798359b91fa
   pizzaImageContainer.classList.add("col-md-6");
 
   pizzaImage.src = "images/pizza.png";
@@ -395,7 +406,15 @@ var pizzaElementGenerator = function(i) {
   pizzaDescriptionContainer.appendChild(ul);
   pizzaContainer.appendChild(pizzaDescriptionContainer);
 
+<<<<<<< HEAD
   return pizzaContainer;
+=======
+// returns a DOM element for each pizza
+var pizzaElementGenerator = function(i) {
+  newPizzaContainer = pizzaContainer.cloneNode(true)
+  newPizzaContainer.id = "pizza" + i;                // gives each pizza element a unique id
+  return newPizzaContainer;
+>>>>>>> 62e60d0b88310134606b44d577ffb798359b91fa
 }
 
 // resizePizzas(size) is called when the slider in the "Our Pizzas" section of the website moves.
@@ -450,10 +469,18 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
+<<<<<<< HEAD
     for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
       var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
       var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
       document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
+=======
+    var pizzaContainer = document.querySelectorAll(".randomPizzaContainer");
+    var dx = determineDx(pizzaContainer[0], size);
+    for (var i = 0; i < pizzaContainer.length; i++) {
+      var newwidth = (pizzaContainer[i].offsetWidth + dx) + 'px';
+      pizzaContainer[i].style.width = newwidth;
+>>>>>>> 62e60d0b88310134606b44d577ffb798359b91fa
     }
   }
 
@@ -503,8 +530,14 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
   var items = document.querySelectorAll('.mover');
+<<<<<<< HEAD
   for (var i = 0; i < items.length; i++) {
     var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+=======
+  var scrollingThing = document.body.scrollTop / 1250
+  for (var i = 0; i < items.length; i++) {
+    var phase = Math.sin(scrollingThing + (i % 5));
+>>>>>>> 62e60d0b88310134606b44d577ffb798359b91fa
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
