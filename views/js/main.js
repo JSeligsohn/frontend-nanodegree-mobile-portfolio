@@ -358,6 +358,8 @@ var makeRandomPizza = function() {
   return pizza;
 }
 
+// returns a DOM element for each pizza
+var pizzaElementGenerator = function(i) {
 
 //Global variable for a pizza container
 
@@ -374,8 +376,10 @@ var makeRandomPizza = function() {
   pizzaDescriptionContainer = document.createElement("div");
 
   pizzaContainer.classList.add("randomPizzaContainer");
-  // pizzaContainer.style.width = "33.33%";
-  // pizzaContainer.style.height = "325px";
+  pizzaContainer.style.width = "33.33%";
+  pizzaContainer.style.height = "325px";
+  pizzaContainer.id = "pizza" + i;                // gives each pizza element a unique id
+
   pizzaImageContainer.classList.add("col-md-6");
 
   pizzaImage.src = "images/pizza.png";
@@ -395,11 +399,8 @@ var makeRandomPizza = function() {
   pizzaDescriptionContainer.appendChild(ul);
   pizzaContainer.appendChild(pizzaDescriptionContainer);
 
-// returns a DOM element for each pizza
-var pizzaElementGenerator = function(i) {
-  newPizzaContainer = pizzaContainer.cloneNode(true)
-  newPizzaContainer.id = "pizza" + i;                // gives each pizza element a unique id
-  return newPizzaContainer;
+
+  return pizzaContainer;
 }
 
 // Global variable for window.performance
@@ -511,6 +512,7 @@ function updatePositions() {
   perf.mark("mark_start_frame");
 
   var items = document.querySelectorAll('.mover');
+
   var scrollingThing = document.body.scrollTop / 1250
   for (var i = 0; i < items.length; i++) {
     var phase = Math.sin(scrollingThing + (i % 5));
