@@ -4,6 +4,13 @@ http://jseligsohn.github.io/frontend-nanodegree-mobile-portfolio/
 2. To check the page load speed, check out https://developers.google.com/speed/pagespeed/insights/
 3. Have fun!
 
+Optimizations Done:
+1. Compressed images
+2. Minified HTML, CSS, JS
+3. Inlined or deferred loading of render blocking CSS
+4. Deffered loading of JS files
+5. Optimized JS file to achieve framerate of 60 FPS
+
 ## Website Performance Optimization portfolio project
 
 Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
