@@ -470,7 +470,7 @@ var resizePizzas = function(size) {
   // User Timing API is awesome
   perf.mark("mark_end_resize");
   perf.measure("measure_pizza_resize", "mark_start_resize", "mark_end_resize");
-  var timeToResize = window.performance.getEntriesByName("measure_pizza_resize");
+  var timeToResize = perf.getEntriesByName("measure_pizza_resize");
   console.log("Time to resize pizzas: " + timeToResize[0].duration + "ms");
 }
 
