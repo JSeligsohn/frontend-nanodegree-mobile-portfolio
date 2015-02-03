@@ -9,9 +9,12 @@
 
     <link href="css/print.css" rel="stylesheet" media='print'>
 
+    <!-- Asyncronous loading of this js file to allow rest of page to load first without waiting -->
     <script async src="js/perfmatters.js"></script>
+    
+    <!-- Minimized HTML, CSS and JS files - see index.html for minified version of this page. -->
 
-    Delay loading of CSS to prevent render blocking
+    <!-- Delay loading of CSS to prevent render blocking -->
     <script>
       var cb = function() {
         var l = document.createElement('link'); l.rel = 'stylesheet';
@@ -47,6 +50,7 @@
         <strong>I love web development!</strong> This is a template for a simple portfolio. I decided to use it to showcase a few Udacity courses I've taken and some teaching work, but you can use it to showcase any kind of project that you want the world to see :) <br> Contact me: me@email.com
       </div>
 
+      <!-- Compressed images to optimize load time of site. -->
       <div class="content">
         <ul>
           <li>
@@ -68,7 +72,7 @@
           </li>
 
           <li>
-            <img style="width: 100px;" src="views/images/pizzeria.jpg">
+            <img style="width: 100px;" src="img/pizzeria.jpg">
             <a href="views/pizza.html">Cam's Pizzeria</a>
             <p>Who wants a performant pizza?</p>
           </li>
@@ -86,6 +90,7 @@
       ga('create', 'UA-XXXX-Y');
       ga('send', 'pageview');
     </script>
+    <!-- Asyncronous loading of this js file to allow rest of page to load first without waiting -->
     <script async src="http://www.google-analytics.com/analytics.js"></script>
 
   </body>

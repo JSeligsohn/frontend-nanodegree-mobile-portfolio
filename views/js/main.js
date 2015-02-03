@@ -458,6 +458,7 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
+    //Cache some variables - pizzaContainer and dx - to avoid recalculations each time for loop is run
     var pizzaContainer = document.querySelectorAll(".randomPizzaContainer");
     var dx = determineDx(pizzaContainer[0], size);
     for (var i = 0; i < pizzaContainer.length; i++) {
@@ -478,6 +479,7 @@ var resizePizzas = function(size) {
 perf.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
+// Cache the pizzasDiv outside the for loop to prevent multiple calls to find its elementId
 var pizzasDiv = document.getElementById("randomPizzas");
 for (var i = 2; i < 100; i++) {
   pizzasDiv.appendChild(pizzaElementGenerator(i));
@@ -507,14 +509,17 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
 // Moves the sliding background pizzas based on scroll position
+// Use the requestAnimationFrame() function to only repaint the pizzas on the page if page is not currently being scrolled
 var latestKnownScrollY = 0,
     ticking = false;
 
+//Called when page is scrolling
 function onScroll() {
   latestKnownScrollY = document.body.scrollTop;
   requestTick();
 }
 
+// Fired after page scroll - ensures that updatePositions only occurs after a scroll
 function requestTick() {
   if (!ticking) {
     requestAnimationFrame(updatePositions);
@@ -522,12 +527,14 @@ function requestTick() {
   ticking = true;
 }
 
+//Called whenver scrolling is finished
 function updatePositions() {
-  ticking = false;
+  ticking = false; // Not scrolling so we can repaint the pizzas' in their new positions
   frame++;
   perf.mark("mark_start_frame");
   var items = document.querySelectorAll('.mover');
 
+  //Cache scrollingThing so we don't have to keep calculating it for each pizza in the for loop
   var scrollingThing = latestKnownScrollY / 1250;
   var phase;
   for (var i = 0; i < items.length; i++) {
